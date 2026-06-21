@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/Koneksi/koneksi.php';
+require_once __DIR__ . '/Models/Pendaftaran.php';
 require_once __DIR__ . '/Models/PendaftaranReguler.php';
 require_once __DIR__ . '/Models/PendaftaranPrestasi.php';
 require_once __DIR__ . '/Models/PendaftaranKedinasan.php';
