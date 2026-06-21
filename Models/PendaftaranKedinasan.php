@@ -12,8 +12,12 @@ class PendaftaranKedinasan extends Pendaftaran {
         $this->instansiSponsor = $data['instansi_sponsor'] ?? '-';
     }
 
+    // =============================================
+    // OVERRIDE: Surcharge 25% untuk administrasi dinas
+    // Total Biaya = biayaPendaftaranDasar * 1.25
+    // =============================================
     public function hitungTotalBiaya(): float {
-        return 0;
+        return $this->biayaPendaftaranDasar * 1.25;
     }
 
     public function tampilkanInfoJalur(): string {
@@ -21,6 +25,8 @@ class PendaftaranKedinasan extends Pendaftaran {
         Jalur             : Kedinasan
         SK Ikatan Dinas   : {$this->skIkatanDinas}
         Instansi Sponsor  : {$this->instansiSponsor}
+        Biaya Dasar       : Rp " . number_format($this->biayaPendaftaranDasar, 0, ',', '.') . "
+        Surcharge (25%)   : Rp " . number_format($this->biayaPendaftaranDasar * 0.25, 0, ',', '.') . "
         Total Biaya       : Rp " . number_format($this->hitungTotalBiaya(), 0, ',', '.') . "
         ";
     }

@@ -12,8 +12,12 @@ class PendaftaranPrestasi extends Pendaftaran {
         $this->tingkatPrestasi = $data['tingkat_prestasi'] ?? '-';
     }
 
+    // =============================================
+    // OVERRIDE: Potongan apresiasi prestasi Rp50.000
+    // Total Biaya = biayaPendaftaranDasar - 50000
+    // =============================================
     public function hitungTotalBiaya(): float {
-        return $this->biayaPendaftaranDasar * 0.80;
+        return $this->biayaPendaftaranDasar - 50000;
     }
 
     public function tampilkanInfoJalur(): string {
@@ -21,6 +25,8 @@ class PendaftaranPrestasi extends Pendaftaran {
         Jalur            : Prestasi
         Jenis Prestasi   : {$this->jenisPrestasi}
         Tingkat Prestasi : {$this->tingkatPrestasi}
+        Biaya Dasar      : Rp " . number_format($this->biayaPendaftaranDasar, 0, ',', '.') . "
+        Potongan         : Rp 50.000
         Total Biaya      : Rp " . number_format($this->hitungTotalBiaya(), 0, ',', '.') . "
         ";
     }

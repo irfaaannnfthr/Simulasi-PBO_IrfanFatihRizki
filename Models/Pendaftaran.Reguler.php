@@ -12,6 +12,10 @@ class PendaftaranReguler extends Pendaftaran {
         $this->lokasiKampus = $data['lokasi_kampus'] ?? '-';
     }
 
+    // =============================================
+    // OVERRIDE: Tarif standar murni tanpa tambahan
+    // Total Biaya = biayaPendaftaranDasar
+    // =============================================
     public function hitungTotalBiaya(): float {
         return $this->biayaPendaftaranDasar;
     }
